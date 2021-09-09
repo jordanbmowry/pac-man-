@@ -70,3 +70,21 @@ createBoard();
 // starting position of pacman
 let pacmanCurrentIndex = 490;
 squares[pacmanCurrentIndex].classList.add('pacman');
+
+function control(event) {
+  switch (event.key) {
+    case 'ArrowDown':
+      console.log('down arrow');
+      break;
+    case 'ArrowLeft':
+      console.log('left arrow');
+      break;
+    case 'ArrowUp':
+      console.log('up arrow');
+      break;
+    case 'ArrowRight':
+      console.log('right arrow');
+  }
+}
+
+document.addEventListener('keyup', control);
