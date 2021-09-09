@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 html,
 body {
   margin: 10;
@@ -19,12 +15,12 @@ body {
 .grid div {
   width: 15px;
   height: 15px;
-  background-color: blue;
 }
 
 .pac-dot {
   background-color: green;
-  border: 5px solid #fff;
+  border: 5px solid white;
+  box-sizing: border-box;
 }
 
 .wall {
