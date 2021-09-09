@@ -66,3 +66,7 @@ function createBoard() {
 }
 
 createBoard();
+
+// starting position of pacman
+let pacmanCurrentIndex = 490;
+squares[pacmanCurrentIndex].classList.add('pacman');
