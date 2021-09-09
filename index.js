@@ -1,6 +1,7 @@
 const $grid = document.querySelector('.grid');
 const $scoreDisplay = document.querySelector('#score');
 const width = 28;
+let squares = [];
 
 // 28 by 28; 784 items in the grid;
 // 0 - pac-dots
@@ -43,4 +44,25 @@ const layout = [
 ];
 
 // create board
-function createBoard() {}
+function createBoard() {
+  layout.forEach((ele, i) => {
+    // create a square
+    const square = document.createElement('div');
+    // put square into the grid
+    $grid.append(square);
+    // put square in squares array
+    squares.push(square);
+
+    if (layout[i] === 0) {
+      squares[i].classList.add('pac-dot');
+    }
+    if (layout[i] === 1) {
+      squares[i].classList.add('wall');
+    }
+    if (layout[i] === 3) {
+      squares[i].classList.add('power-pellet');
+    }
+  });
+}
+
+createBoard();
