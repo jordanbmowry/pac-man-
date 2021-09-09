@@ -75,7 +75,9 @@ function control(event) {
   squares[pacmanCurrentIndex].classList.remove('pacman');
   switch (event.key) {
     case 'ArrowDown':
-      console.log('down arrow');
+      if (pacmanCurrentIndex + width < width * width) {
+        pacmanCurrentIndex += width;
+      }
       break;
     case 'ArrowLeft':
       if (pacmanCurrentIndex % width !== 0) {
@@ -83,10 +85,14 @@ function control(event) {
       }
       break;
     case 'ArrowUp':
-      console.log('up arrow');
+      if (pacmanCurrentIndex - width >= 0) {
+        pacmanCurrentIndex -= width;
+      }
       break;
     case 'ArrowRight':
-      console.log('right arrow');
+      if (pacmanCurrentIndex % width < width - 1) {
+        pacmanCurrentIndex += 1;
+      }
   }
   squares[pacmanCurrentIndex].classList.add('pacman');
 }
