@@ -75,22 +75,34 @@ function control(event) {
   squares[pacmanCurrentIndex].classList.remove('pacman');
   switch (event.key) {
     case 'ArrowDown':
-      if (pacmanCurrentIndex + width < width * width) {
+      if (
+        !squares[pacmanCurrentIndex + width].classList.contains('wall') &&
+        pacmanCurrentIndex + width < width * width
+      ) {
         pacmanCurrentIndex += width;
       }
       break;
     case 'ArrowLeft':
-      if (pacmanCurrentIndex % width !== 0) {
+      if (
+        !squares[pacmanCurrentIndex - 1].classList.contains('wall') &&
+        pacmanCurrentIndex % width !== 0
+      ) {
         pacmanCurrentIndex -= 1;
       }
       break;
     case 'ArrowUp':
-      if (pacmanCurrentIndex - width >= 0) {
+      if (
+        !squares[pacmanCurrentIndex - width].classList.contains('wall') &&
+        pacmanCurrentIndex - width >= 0
+      ) {
         pacmanCurrentIndex -= width;
       }
       break;
     case 'ArrowRight':
-      if (pacmanCurrentIndex % width < width - 1) {
+      if (
+        !squares[pacmanCurrentIndex + 1].classList.contains('wall') &&
+        pacmanCurrentIndex % width < width - 1
+      ) {
         pacmanCurrentIndex += 1;
       }
   }
