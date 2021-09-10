@@ -136,9 +136,12 @@ function pacDotEaten() {
 
 class Ghost {
   constructor(className, startIndex, speed) {
-    this.classList = className;
+    this.className = className;
     this.startIndex = startIndex;
     this.speed = speed;
+    this.currentIndex = startIndex;
+    this.isScared = false;
+    this.timerId = NaN;
   }
 }
 
@@ -148,3 +151,16 @@ const ghosts = [
   new Ghost('inky', 351, 300),
   new Ghost('clyde', 379, 500),
 ];
+
+// draw ghosts onto grid
+ghosts.forEach((ghost) => {
+  squares[ghost.startIndex].classList.add(ghost.className);
+});
+
+ghosts.forEach((ghost) => moveGhost(ghost));
+
+function moveGhost(ghost) {
+  const directions = [-1, +1, -width, +width];
+  let direction = directions[Math.floor(Math.random() * directions.length)];
+  console.log(direction);
+}
