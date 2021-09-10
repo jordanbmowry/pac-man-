@@ -133,3 +133,18 @@ function pacDotEaten() {
     $scoreDisplay.textContent = score;
   }
 }
+
+class Ghost {
+  constructor(className, startIndex, speed) {
+    this.classList = className;
+    this.startIndex = startIndex;
+    this.speed = speed;
+  }
+}
+
+const ghosts = [
+  new Ghost('blinky', 348, 250),
+  new Ghost('pinky', 376, 400),
+  new Ghost('inky', 351, 300),
+  new Ghost('clyde', 379, 500),
+];
