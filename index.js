@@ -228,7 +228,7 @@ function checkForGameOver() {
 }
 
 function checkForWin() {
-  if (score === 500) {
+  if (score >= 500) {
     ghosts.forEach((ghost) => {
       clearInterval(ghost.timerId);
     });
