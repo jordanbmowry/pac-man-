@@ -45,14 +45,12 @@ const layout = [
   1, 1, 1, 1,
 ];
 
-// create board
 function createBoard() {
   layout.forEach((ele, i) => {
-    // create a square
     const square = document.createElement('div');
-    // put square into the grid
+
     $grid.append(square);
-    // put square in squares array
+
     squares.push(square);
 
     if (layout[i] === 0) {
@@ -72,7 +70,6 @@ function createBoard() {
 
 createBoard();
 
-// starting position of pacman
 let pacmanCurrentIndex = 490;
 squares[pacmanCurrentIndex].classList.add('pacman');
 
@@ -124,6 +121,7 @@ function control(event) {
   squares[pacmanCurrentIndex].classList.add('pacman');
   pacDotEaten();
   powerPelletEaten();
+  checkForWin();
 }
 
 document.addEventListener('keyup', control);
@@ -172,7 +170,6 @@ const ghosts = [
   new Ghost('clyde', 379, 500),
 ];
 
-// draw ghosts onto grid
 ghosts.forEach((ghost) => {
   squares[ghost.currentIndex].classList.add(ghost.className);
   squares[ghost.startIndex].classList.add('ghost');
@@ -227,5 +224,15 @@ function checkForGameOver() {
     });
     document.removeEventListener('keyup', control);
     $gameText.textContent = `😭 Game Over!`;
+  }
+}
+
+function checkForWin() {
+  if (score === 500) {
+    ghosts.forEach((ghost) => {
+      clearInterval(ghost.timerId);
+    });
+    document.removeEventListener('keyup', control);
+    $gameText.textContent = `🏆 Congratulations! You won!`;
   }
 }
