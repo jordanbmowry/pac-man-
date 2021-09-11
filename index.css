@@ -12,6 +12,21 @@ body {
   border: solid black;
 }
 
+.game-text {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+#score {
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .grid div {
   width: 15px;
   height: 15px;
