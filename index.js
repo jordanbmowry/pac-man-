@@ -1,5 +1,6 @@
 const $grid = document.querySelector('.grid');
 const $scoreDisplay = document.querySelector('#score');
+const $gameText = document.querySelector('.game-text');
 const width = 28;
 let squares = [];
 let score = 0;
@@ -212,5 +213,19 @@ function moveGhost(ghost) {
       $scoreDisplay.textContent = score;
       squares[ghost.currentIndex].classList.add('ghost', ghost.className);
     }
+    checkForGameOver();
   }, ghost.speed);
+}
+
+function checkForGameOver() {
+  if (
+    !squares[pacmanCurrentIndex].classList.contains('scared-ghost') &&
+    squares[pacmanCurrentIndex].classList.contains('ghost')
+  ) {
+    ghosts.forEach((ghost) => {
+      clearInterval(ghost.timerId);
+    });
+    document.removeEventListener('keyup', control);
+    $gameText.textContent = `😭 Game Over!`;
+  }
 }
